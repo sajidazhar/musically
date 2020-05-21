@@ -1,0 +1,136 @@
+.mainDiv {
+    position: fixed;
+    top:65px;
+    width: 100%;
+    display: inline-block;
+    font-family: 'Roboto Condensed';
+    background-image: url('.././bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.musicList {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #222336;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.6);
+}
+.fa {
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+}
+.searchText {
+    font-family: Arial Narrow,Arial,sans-serif;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.search {
+    padding: 0.5em 1em;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.uol {
+    margin: 0;
+    width: 100%;
+    overflow-y: scroll;
+    height: 75vh;
+}
+.dark {
+    background-color: rgba(0,0,0,0.18);
+    padding: 1em;
+    font-family: 'Roboto Condensed';
+}
+.light {
+    background-color: rgba(0,0,0,0.1);
+    padding: 1em;
+    font-family: 'Roboto Condensed';
+}
+div.uol>div>img {
+    width: 100%;
+    border-radius: 50%;
+}
+.bottom {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    bottom: 65px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0,0,0,0.08);
+    min-height: 3.5em;
+}
+.headPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Roboto Condensed';
+}
+.flexdiv {
+    display: flex;
+    align-items: center;
+}
+.flexdiv > input {
+    width: 100%;
+    margin: 0.5em;
+}
+h1 {
+    width: 100%;
+    font-family: 'Roboto Condensed';
+    color: white;
+    font-size: 40px;
+}
+h6 {
+    width: 100%;
+}
+i {
+    cursor: pointer;
+}
+.stylish-font{
+    font-family: 'Roboto Condensed';
+    color: #787BA2;
+    font-size: 18px;
+}
+.stylish-symbol {
+    color: #787BA2;
+    font-size: 22px;
+}
+.text-clip {
+    margin-left: 1em;
+}
+.slider {
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;  
+    background: #787BA2;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    cursor: pointer;
+}

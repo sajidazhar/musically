@@ -1,0 +1,146 @@
+<style>
+    form {
+        border: 3px solid #f1f1f1;
+    }
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    button:hover {
+        opacity: 0.8;
+    }
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+    .containmain {
+        padding: 16px;
+    }
+    .containment {
+        display:flex;
+        align-items: center;
+        padding: 16px;
+    }
+    span.psw {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 21;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+    .modal-content {
+        background-color: #fefefe; 
+        border: 1px solid #888;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+        }
+    .close:hover,.close:focus {
+        color: red;
+        cursor: pointer;
+    }
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)}
+        to {-webkit-transform: scale(1)}
+    }
+    @keyframes animatezoom {
+        from {transform: scale(0)}
+        to {transform: scale(1)}
+    }
+    .or-seperator {
+        text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .or-seperator i {
+        padding: 0 10px;
+        background: #f7f7f7;
+        position: relative;
+        top: -11px;
+        z-index: 1;
+    }
+    .social-btn .btn {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+        font-size: 15px; 
+        line-height: 24px;       
+    }
+    .social-btn .btn i {
+        float: left;
+        margin: 4px 15px  0 5px;
+        min-width: 15px;
+    }
+</style>
+<div id="id01" class="modal">
+    <form class="modal-content animate col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6" action="/login" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'"class="close" title="Close Modal">&times;</span>
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="containmain">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>	  
+            <button type="submit" class="btn">Login</button>
+            <label style="float: right;">
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div style="padding: 0px 16px;">
+            <div class="or-seperator"><i>OR</i></div>
+            <div class="text-center social-btn">
+                <a href="/auth/facebook" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with&nbsp;<b>Facebook</b></a>
+                <a href="/auth/google" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with&nbsp;<b>Google</b></a>
+            </div>
+        </div>
+          <div class="containment" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+    </form>
+</div>
+<script>
+    var modal = document.getElementById('id01');
+    window.onclick = function(event) 
+    {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var error = url.searchParams.get("error");
+    if(error!=null)
+        loginbtn.click();
+</script>

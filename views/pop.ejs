@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Soft</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    </head>
+    <body>
+        <% include ./partials/navbar %>
+        <div class="mainDiv">
+            <div class="hidden-xs col-sm-7" style="padding: 0;height: 100vh;">
+                <div style="position: absolute;top:0px;bottom: 117.5px;width: 100%;display: flex;align-items: center;justify-content: center;">
+                    <div style="background-color: white;">
+                        <div style="margin: 50px 50px 100px;">
+                            <% if(data.length==0){ %>
+                                <img src="pic1.png" style="height: 250px;width: 250px;border: 1px solid black;" id="sideimg" />
+                            <% }else{ %>
+                                <img src="/img/<%= data[0]._id %>" style="height: 250px;width: 250px;border: 1px solid black;" id="sideimg" />
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom flexdiv col-xs-12" style="background-color: #333333;">
+                    <i class="fa fa-play fx fx-drop-in stylish-symbol"></i>
+                    <i class="fa fa-volume-down stylish-symbol"></i>
+                    <input id="$seekbar" type="range" step="any" value="0" class="slider">
+                    <i class="fa fa-volume-up stylish-symbol"></i>
+                    <div class="text-clip stylish-font">
+                        <span id="duration"><b>00:00:00</b></span>
+                    </div>
+                    <audio style="display: none;" id="$audio">
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-5" style="padding: 0;">
+                <div class="w3-sidebar w3-bar-block w3-card musicList">
+                    <div class="search">
+                        <i class="fa fa-search"></i> 
+                        <input class="searchText" type="text" placeholder="Search music...">
+                    </div> 
+                    <div class="uol">
+                        <% for(i=0;i<data.length;++i) { %>
+                            <% if(i%2==0) { %>
+                                <div class="dark col-xs-12 col-sm-12" onclick="play(this)" id="<%= data[i].originalname %>">
+                                    <div class="col-xs-4" style="padding: 0;display: flex;justify-content: center;">
+                                        <img src="/img/<%= data[i]._id %>" style="height: 70px;width: 70px;" />
+                                    </div>
+                                    <div class="col-xs-8" style="padding: 0;">
+                                        <h6 style="color: #6495ED;margin: 0px 0px 5px;"><b><%= data[i].title.toUpperCase() %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><%= data[i].album.toUpperCase() %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><label style="opacity: 0.5;margin: 0;">Artsist(s):&nbsp;</label><%= data[i].artists %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><label style="opacity: 0.5;margin: 0;">Year:&nbsp;</label><%= data[i].year %></b></h6>
+                                    </div>
+                                </div>
+                            <% } else { %>
+                                <div class="light col-xs-12 col-sm-12"  onclick="play(this)" id="<%= data[i].originalname %>">
+                                    <div class="col-xs-4" style="padding: 0;display: flex;justify-content: center;">
+                                        <img src="/img/<%= data[i]._id %>" style="height: 70px;width: 70px;" />
+                                    </div>
+                                    <div class="col-xs-8" style="padding: 0;">
+                                        <h6 style="color: #6495ED;margin: 0px 0px 5px;"><b><%= data[i].title.toUpperCase() %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><%= data[i].album.toUpperCase() %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><label style="opacity: 0.5;margin: 0;">Artsist(s):&nbsp;</label><%= data[i].artists %></b></h6>
+                                        <h6 style="color: #787BA2;margin: 0;"><b><label style="opacity: 0.5;margin: 0;">Year:&nbsp;</label><%= data[i].year %></b></h6>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div class="bottom">
+                        <div style="color: #787BA2;font-size: 18px;" class="hidden-xs col-sm-6">
+                            <span class="fa clickable fa-sort-amount-asc" style="padding: 0;color: #787BA2;"></span>
+                            <span style="opacity: 0.5;"><b>Sort:</b></span>
+                            <span style="color: #6495ED"><b>Title</b></span> 
+                        </div>
+                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                            <div class="flexdiv">
+                                <i class="fa fa-play fx fx-drop-in stylish-symbol"></i>
+                                <i class="fa fa-volume-down stylish-symbol"></i>
+                                <input id="$seekbar1" type="range" step="any" value="0" class="slider">
+                                <i class="fa fa-volume-up stylish-symbol"></i>
+                                <div class="text-clip stylish-font">
+                                    <span id="duration1"><b>00:00:00</b></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="float: right;" class="hidden-xs col-sm-6">
+                            <div style="display: flex;align-items: center;float: right;">
+                                <img src="/shuffle.png" style="height: 40px;width: 50px;cursor: pointer; margin-right: 1em">
+                                <img src="/upload.png" style="height: 35px;width: 50px;cursor: pointer;" id="uploadsong">
+                            </div>
+                            <div style="display: none;">
+                                <form method="POST" action="/upload" enctype="multipart/form-data">
+                                    <input type="file" accept=".mp3" id="song" name="song" onchange="submit()" />
+                                    <input type="submit" id="submitsong">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+</html>
